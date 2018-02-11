@@ -1,0 +1,1 @@
+export const CHANGE_NAVBAR_TEXT = 'core/CHANGE_NAVBAR_TEXT';
