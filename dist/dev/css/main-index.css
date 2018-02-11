@@ -15,8 +15,7 @@ html, body {
     background-color: #fff;
 }
 
-#hero {
-    height: 100vh;
+#hero-home {
     background: linear-gradient(
       rgba(0, 0, 0, 0.05), 
       rgba(0, 0, 0, 0.05)
@@ -25,6 +24,10 @@ html, body {
     -moz-background-size: 70%;
     -o-background-size: 70%;
     background-size: 70%;
+}
+
+#hero-story {
+    background: rgb(221, 209, 190);
 }
 
 body {
