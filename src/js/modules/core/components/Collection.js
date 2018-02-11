@@ -1,7 +1,8 @@
 import React from "react";
 import injectSheet from "react-jss";
 
-import Navbar from "./Navbar";
+import FixedNavbar from "./FixedNavbar";
+import Showcase from "./Showcase";
 
 const styles = {  
   boujeeBack: {
@@ -13,11 +14,11 @@ const styles = {
     left: 0,
     width: "100%",
     height: "100%",
-    zIndex: -1,
+    zIndex: -2,
   },
   backText: {
     textAlign: "center",
-    fontSize: "110px",
+    fontSize: "160px",
     fontWeight: 700,
   }
 };
@@ -25,7 +26,7 @@ const styles = {
 const Collection = ({ classes }) => {
   return (
     <div>
-      <Navbar />
+      <FixedNavbar />
       <div className={classes.boujeeBack}>
         <h1 className={classes.backText}>books</h1>
       </div>
