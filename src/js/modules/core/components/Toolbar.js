@@ -13,10 +13,10 @@ class Toolbar extends PureComponent {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, highlightedText } = this.props;
     return (
       <div className={classes.Toolbar}>
-        
+        {highlightedText}
       </div>
     );
   }
