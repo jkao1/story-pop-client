@@ -20,7 +20,7 @@ class Showcase extends PureComponent {
     this.state = {
       images: filenames.map(name => ({
         src: '/img/covers/' + name,
-        link: '/stories/where-the-wild-things-are',
+        link: '/stories/1',
       })),
     }
   }
@@ -31,7 +31,7 @@ class Showcase extends PureComponent {
 
     const imageRows = [];
     for (let i = 0; i < images.length; i += 3) {
-      imageRows.push(<ImageRow index={i} images={images.slice(i, i + 3)} />);
+      imageRows.push(<ImageRow key={i} index={i} images={images.slice(i, i + 3)} />);
     }
     return (
       <div className={classes.Showcase}>

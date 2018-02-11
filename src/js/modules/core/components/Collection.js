@@ -1,7 +1,6 @@
 import React from "react";
 import injectSheet from "react-jss";
 
-import FixedNavbar from "./FixedNavbar";
 import Showcase from "./Showcase";
 
 const styles = {  
@@ -26,7 +25,6 @@ const styles = {
 const Collection = ({ classes }) => {
   return (
     <div>
-      <FixedNavbar />
       <div className={classes.boujeeBack}>
         <h1 className={classes.backText}>books</h1>
       </div>

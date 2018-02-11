@@ -1,18 +1,20 @@
-import React from "react";
+import React, { PureComponent } from "react";
 import { compose } from "redux";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 import humps from "humps";
 import injectSheet from "react-jss";
 
-import Navbar from "./Navbar";
-import SideNav from "./SideNav";
+import StoryCover from "./StoryCover";
+import StoryEditor from "./StoryEditor";
 
 const StoryQuery = gql`
   query StoryQuery($story_id: ID!) {
     storyByID(id: $story_id) {
+      id
       title
       pages {
+        page_number
         content
         media {
           content_url
@@ -23,59 +25,62 @@ const StoryQuery = gql`
 `;
 
 const styles = {  
-  hero: {
+  content: {
+    paddingTop: "100px",
     display: "flex",
     flexDirection: "column",
-    justifyContent: "space-between",
-    height: "100vh",
-    background: "rgb(221, 209, 190)",
-    position: "absolute",
-    width: "100%",
-    zIndex: -1,
-  },
-  content: {
-    paddingTop: "170px",
-    marginLeft: "210px",
-  },
-  story: {
-    margin: "0 auto",
-  },
-  title: {
-    fontSize: "46px",
-    lineHeight: "101px",
-    fontFamily: "Helvetica Neue",
-    fontWeight: 500,
-    textFillColor: "transparent",
-    textStrokeWidth: "1px",
-    textDecoration: "underline",
-    textStrokeColor: "#000",
+    position: 'relative',
   },
 };
 
-const Story = ({ classes, data }) => {
-  if (data.loading) {
-    return null;
+class Story extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      pageNumber: 0,
+      numPages: 0,
+    };
   }
-  data = humps.camelizeKeys(data);
 
-  const story = data.storyByID;
-  const { pages } = story;
+  componentWillUpdate(nextProps, nextState) {
+    if (this.state.numPages === 0 && nextProps.data && nextProps.data.storyByID) {
+      this.setState({ numPages: nextProps.data.storyByID.pages.length });
+    }
+  }
 
-  return (
-    <div className={classes.Story}>    
-      <div className={classes.hero}>
-        <Navbar />
-        <SideNav />
-        <div></div>
+  nextPage = () => {
+    this.setState({ pageNumber: (this.state.pageNumber + 1) % this.state.numPages })
+  }
+
+  prevPage = () => {
+    if (this.state.pageNumber === 0) {
+      this.setState({ pageNumber: this.state.numPages - 1 });
+    } else {
+      this.setState({ pageNumber: this.state.pageNumber - 1 });
+    }
+  }
+
+  render() {
+    const { pageNumber } = this.state;
+    const { classes, match } = this.props;
+    let { data } = this.props;
+
+    if (data.loading) {
+      return null;
+    }
+    data = humps.camelizeKeys(data);
+
+    const story = data.storyByID;
+    const { pages } = story;
+
+    return (
+      <div className={classes.Story}>
+        <StoryEditor story={story} pageNumber={pageNumber} nextPage={this.nextPage} prevPage={this.prevPage}/>
       </div>
-      <div className={classes.content}>
-        <div className={classes.story}>
-          <p className={classes.title}>{story.title}</p>
-        </div>
-      </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 export default compose(
   graphql(StoryQuery, {

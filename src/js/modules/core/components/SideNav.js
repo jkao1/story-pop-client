@@ -12,9 +12,6 @@ const styles = {
     "& a": {
       display: "block",
       marginTop: "20px",
-      "&:hover": {
-        textDecoration: "none",
-      }
     },
   },
 };

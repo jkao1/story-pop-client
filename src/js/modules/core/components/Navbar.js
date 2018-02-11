@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import injectSheet from "react-jss";
+import { connect } from 'react-redux';
 
 const styles = {
   Navbar: {
@@ -14,6 +15,9 @@ const styles = {
     fontSize: "20px",
     fontWeight: 700,    
     textTransform: "uppercase",
+    "& a:hover": {
+      textDecoration: "none !important",
+    },
   },
   navigation: {
     "& a": {
@@ -35,10 +39,12 @@ const links = [
   },
 ]
 
-const Navbar = ({ classes }) => {
+const Navbar = ({ classes, navbarText }) => {
   return (
     <div className={classes.Navbar}>
-      <div className={classes.logo}><Link to="/">Story Pop</Link></div>
+      <div className={classes.logo}>
+        <Link to="/">{navbarText ? navbarText : "Story Pop"}</Link>
+      </div>
       <div className={classes.navigation}>
         {links.map(link => {
           return (
@@ -51,4 +57,8 @@ const Navbar = ({ classes }) => {
   );
 };
 
-export default injectSheet(styles)(Navbar);
+const mapStateToProps = state => ({
+  navbarText: state.core.navbarText,
+});
+
+export default connect(mapStateToProps)(injectSheet(styles)(Navbar));

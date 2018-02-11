@@ -9,7 +9,7 @@ const styles = {
       position: "relative",
       display: "block",
       "& img": {
-        opacity: .9,
+        opacity: .8,
         width: "100%",
         top: 0,
         left: 0,
