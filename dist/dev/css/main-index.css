@@ -20,12 +20,96 @@ html, body {
       rgba(0, 0, 0, 0.05), 
       rgba(0, 0, 0, 0.05)
     ), url(/img/house.jpg) no-repeat center center fixed;
-    -webkit-background-size: 70%;
-    -moz-background-size: 70%;
-    -o-background-size: 70%;
     background-size: 70%;
 }
+#hero-pages {
+    background: linear-gradient(
+      rgba(0, 0, 0, 0), 
+      rgba(0, 0, 0, 0)
+    ), url(/img/bg/3.svg) no-repeat center center fixed;
+    background-size: 100%;
+}
+/*
+#hero-pages-0 {
+    background: linear-gradient(
+      rgba(0, 0, 0, 0), 
+      rgba(0, 0, 0, 0)
+    ), url(/img/bg/10.svg) no-repeat center center fixed;
+    background-size: 100%;
+}
 
+#hero-pages-1 {
+    background: linear-gradient(
+      rgba(0, 0, 0, 0), 
+      rgba(0, 0, 0, 0)
+    ), url(/img/bg/1.svg) no-repeat center center fixed;
+    background-size: 100%;
+}
+
+#hero-pages-2 {
+    background: linear-gradient(
+      rgba(0, 0, 0, 0), 
+      rgba(0, 0, 0, 0)
+    ), url(/img/bg/2.svg) no-repeat center center fixed;
+    background-size: 100%;
+}
+
+#hero-pages-3{
+    background: linear-gradient(
+      rgba(0, 0, 0, 0), 
+      rgba(0, 0, 0, 0)
+    ), url(/img/bg/3.svg) no-repeat center center fixed;
+    background-size: 100%;
+}
+
+#hero-pages-4 {
+    background: linear-gradient(
+      rgba(0, 0, 0, 0), 
+      rgba(0, 0, 0, 0)
+    ), url(/img/bg/4.svg) no-repeat center center fixed;
+    background-size: 100%;
+}
+
+#hero-pages-5 {
+    background: linear-gradient(
+      rgba(0, 0, 0, 0), 
+      rgba(0, 0, 0, 0)
+    ), url(/img/bg/5.svg) no-repeat center center fixed;
+    background-size: 100%;
+}
+
+#hero-pages-7 {
+    background: linear-gradient(
+      rgba(0, 0, 0, 0), 
+      rgba(0, 0, 0, 0)
+    ), url(/img/bg/7.svg) no-repeat center center fixed;
+    background-size: 100%;
+}
+
+#hero-pages-6 {
+    background: linear-gradient(
+      rgba(0, 0, 0, 0), 
+      rgba(0, 0, 0, 0)
+    ), url(/img/bg/6.svg) no-repeat center center fixed;
+    background-size: 100%;
+}
+
+#hero-pages-8 {
+    background: linear-gradient(
+      rgba(0, 0, 0, 0), 
+      rgba(0, 0, 0, 0)
+    ), url(/img/bg/8.svg) no-repeat center center fixed;
+    background-size: 100%;
+}
+
+#hero-pages-9 {
+    background: linear-gradient(
+      rgba(0, 0, 0, 0), 
+      rgba(0, 0, 0, 0)
+    ), url(/img/bg/9.svg) no-repeat center center fixed;
+    background-size: 100%;
+}
+*/
 #hero-story {
     background: rgb(221, 209, 190);
 }

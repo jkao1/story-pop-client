@@ -51,7 +51,7 @@ const Navbar = ({ classes, navbarText }) => {
             <Link key={link.title} to={link.to}>{link.title}</Link>
           );
         })}
-        <a href="/" key="bag">Books: 0</a>
+        <a href="/collection" key="bag">Books: 26</a>
       </div>
     </div>
   );

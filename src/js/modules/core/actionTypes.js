@@ -1,1 +1,2 @@
 export const CHANGE_NAVBAR_TEXT = 'core/CHANGE_NAVBAR_TEXT';
+export const CHANGE_PAGE_NUMBER = 'core/CHANGE_PAGE_NUMBER';

@@ -1,9 +1,11 @@
 import {
-  CHANGE_NAVBAR_TEXT
+  CHANGE_NAVBAR_TEXT,
+  CHANGE_PAGE_NUMBER,
 } from "./actionTypes";
 
 const initialState = {
-  navbarText: ''
+  navbarText: '',
+  pageNumber: null,
 };
 
 const reducer = (state = { ...initialState }, action) => {
@@ -13,6 +15,12 @@ const reducer = (state = { ...initialState }, action) => {
         ...state,
         navbarText: action.payload,
       };
+    }
+    case CHANGE_PAGE_NUMBER: {
+      return {
+        ...state,
+        pageNumber: action.payload
+      }
     }
     case "@@router/LOCATION_CHANGE": {
       return {

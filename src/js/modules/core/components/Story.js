@@ -1,5 +1,7 @@
 import React, { PureComponent } from "react";
 import { compose } from "redux";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 import humps from "humps";
@@ -7,6 +9,7 @@ import injectSheet from "react-jss";
 
 import StoryCover from "./StoryCover";
 import StoryEditor from "./StoryEditor";
+import { changePageNumber } from "../actions";
 
 const StoryQuery = gql`
   query StoryQuery($story_id: ID!) {
@@ -43,10 +46,19 @@ class Story extends PureComponent {
     };
   }
 
+  componentDidMount() {
+    this.props.changePageNumber(this.state.pageNumber);
+  }
+
+  componentWillUnmount() {
+    this.props.changePageNumber(null);
+  }
+
   componentWillUpdate(nextProps, nextState) {
     if (this.state.numPages === 0 && nextProps.data && nextProps.data.storyByID) {
       this.setState({ numPages: nextProps.data.storyByID.pages.length });
     }
+    this.props.changePageNumber(nextState.pageNumber);
   }
 
   nextPage = () => {
@@ -82,6 +94,8 @@ class Story extends PureComponent {
   }
 }
 
+const mapDispatchToProps = dispatch => bindActionCreators({ changePageNumber }, dispatch);
+
 export default compose(
   graphql(StoryQuery, {
     options: ({ match }) => ({
@@ -90,5 +104,6 @@ export default compose(
       },
     }),
   }),
+  connect(null, mapDispatchToProps),
   injectSheet(styles),
 )(Story);

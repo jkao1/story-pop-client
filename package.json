@@ -74,6 +74,7 @@
     "highlightable": "^1.0.7",
     "humps": "^2.0.1",
     "list-react-files": "^0.2.0",
+    "material-ui": "^0.20.0",
     "node-dir": "^0.1.17",
     "react-apollo": "^2.0.4",
     "react-bootstrap": "^0.32.1",

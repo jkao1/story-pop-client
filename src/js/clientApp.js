@@ -4,6 +4,7 @@ import ReactDOM from "react-dom";
 import { RoutingApp } from "./modules";
 import { AppContainer } from "react-hot-loader";
 import injectTapEventPlugin from "react-tap-event-plugin";
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import { ApolloProvider } from "react-apollo";
 import { ApolloClient } from "apollo-client";
@@ -30,9 +31,11 @@ const apolloClient = new ApolloClient({
 
 ReactDOM.render(
   <AppContainer>
-    <ApolloProvider client={apolloClient}>
-      <RoutingApp />
-    </ApolloProvider>
+    <MuiThemeProvider>
+      <ApolloProvider client={apolloClient}>
+        <RoutingApp />
+      </ApolloProvider>
+    </MuiThemeProvider>
   </AppContainer>,
   document.getElementById("app"),
 );

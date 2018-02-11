@@ -26,13 +26,17 @@ class PageLayout extends PureComponent {
   }
 
   render() {
-    const { classes, children, location } = this.props;
+    const { classes, children, location, pageNumber } = this.props;
 
     let heroId = '';
     if (location.pathname === '/') {
       heroId = 'hero-home'
     } else if (location.pathname.includes('stories') && !location.pathname.includes('pages')) {
       heroId = 'hero-story'
+    }
+
+    if (pageNumber === 0 || pageNumber) {
+      heroId = 'hero-pages'
     }
 
     return (
@@ -51,7 +55,8 @@ class PageLayout extends PureComponent {
 }
 
 const mapStateToProps = state => ({
-  navbarText: state.core.customNavbarText
+  navbarText: state.core.customNavbarText,
+  pageNumber: state.core.pageNumber,
 });
 
 export default withRouter(connect(mapStateToProps)(injectSheet(styles)(PageLayout)));

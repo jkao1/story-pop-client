@@ -3,6 +3,7 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import injectSheet from "react-jss";
 import Highlightable from 'highlightable';
+import RaisedButton from 'material-ui/RaisedButton';
 
 import { changeNavbarText } from "../actions";
 import Toolbar from "./Toolbar";
@@ -15,20 +16,26 @@ const styles = {
     margin: '0 auto',
   },
   editor: {
-    display: 'flex'
+    display: 'flex',
+    justifyContent: 'space-around',
   },
   text: {
     fontFamily: "Helvetica Neue",
     fontWeight: 400,
-    fontSize: "30px",
-    flexBasis: "70%",
+    fontSize: "40px",
+    flexBasis: "60%",
     "& > div": {
-      marginBottom: "10px",
+      marginBottom: "25px",
       "& > span::selection": {
         backgroundColor: 'rgb(240, 92, 80)',
       },
     },
   },
+  buttons: {
+    display: "flex",
+    width: "40%",
+    justifyContent: "space-around",
+  }
 };  
 
 class StoryEditor extends PureComponent {
@@ -58,12 +65,16 @@ class StoryEditor extends PureComponent {
     this.setState({ highlightedText: range.text });
   }
 
+  clearHighlighted = () => {
+    this.setState({ highlightedText: '' });
+  }
+
   render() {
     const { page, highlightedText } = this.state;
     const { nextPage, prevPage, classes } = this.props;
 
     return (
-      <div className={classes.StoryEditor}>
+      <div className={classes.StoryEditor} onClick={this.clearHighlighted}>
         <div className={classes.editor}>
           <div className={classes.text}>
           {page.content.split('\\n').map(text => {
@@ -84,9 +95,10 @@ class StoryEditor extends PureComponent {
           </div>
           <Toolbar highlightedText={highlightedText}/>
         </div>
-        
-        <button onClick={prevPage}>Prev Page</button>
-        <button onClick={nextPage}>Next Page</button>
+        <div className={classes.buttons}>
+          <RaisedButton label="Previous" onClick={prevPage} primary={true}></RaisedButton>
+          <RaisedButton label="Next" onClick={nextPage} secondary={true}></RaisedButton>
+        </div>
       </div>
     );
   }
